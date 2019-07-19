@@ -55,7 +55,7 @@ def fpost_req(url, **kwargs):
     rawdata = b''
     jsondata = {}
     try:
-        r = requests.post(url, stream=True, **kwargs)
+        r = requests.post(url, stream=True, **dict(kwargs, timeout=1800))
         httpcode = r.status_code
         rawdata = b''
         for rchunk in r.iter_content(8192*100):
@@ -106,7 +106,7 @@ def fput_req(url, **kwargs):
     rawdata = b''
     jsondata = {}
     try:
-        r = requests.put(url, stream=True, **kwargs)
+        r = requests.put(url, stream=True, **dict(kwargs, timeout=1800))
         httpcode = r.status_code
         rawdata = b''
         for rchunk in r.iter_content(8192*100):
@@ -158,7 +158,7 @@ def fget_req(url, **kwargs):
     rawdata = b''
     jsondata = {}
     try:
-        r = requests.get(url, stream=True, **kwargs)
+        r = requests.get(url, stream=True, **dict(kwargs, timeout=1800))
         httpcode = r.status_code
         rawdata = b''
         for rchunk in r.iter_content(8192*100):
@@ -211,7 +211,7 @@ def fdelete_req(url, **kwargs):
     rawdata = b''
     jsondata = {}
     try:
-        r = requests.delete(url, stream=True, **kwargs)
+        r = requests.delete(url, stream=True, **dict(kwargs, timeout=1800))
         httpcode = r.status_code
         rawdata = b''
         for rchunk in r.iter_content(8192*100):
